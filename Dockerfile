@@ -8,9 +8,10 @@ RUN apt-add-repository -y ppa:webupd8team/java
 RUN apt-get -y update
 RUN /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java7-installer oracle-java7-set-default
+
+RUN apt-get install curl
 RUN curl -s http://d3kbcqa49mib13.cloudfront.net/spark-1.2.1-bin-hadoop2.4.tgz | tar -xz -C /usr/local/
 RUN cd /usr/local && ln -s spark-1.2.1-bin-hadoop2.4 spark
-RUN apt-get install curl
 ENV SPARK_HOME /usr/local/spark
 
 ENV spark.driver.port 7001
