@@ -16,16 +16,8 @@ ADD scripts/start-master.sh /start-master.sh
 ADD scripts/start-worker /start-worker.sh
 ADD scripts/spark-shell.sh  /spark-shell.sh
 ADD scripts/spark-defaults.conf /spark-defaults.conf
+ADD scripts/remove_alias.sh /remove_alias.sh
 ENV SPARK_HOME /usr/local/spark
-
-ENV spark.driver.port 7001
-ENV spark.fileserver.port 7002
-ENV spark.broadcast.port 7003
-ENV spark.replClassServer.port 7004
-ENV spark.blockManager.port 7005
-ENV spark.executor.port 7006
-ENV spark.ui.port 4040
-ENV spark.broadcast.factory org.apache.spark.broadcast.HttpBroadcastFactory
 
 ENV SPARK_MASTER_OPTS="-Dspark.driver.port=7001 -Dspark.fileserver.port=7002 -Dspark.broadcast.port=7003 -Dspark.replClassServer.port=7004 -Dspark.blockManager.port=7005 -Dspark.executor.port=7006 -Dspark.ui.port=4040 -Dspark.broadcast.factory=org.apache.spark.broadcast.HttpBroadcastFactory"
 ENV SPARK_WORKER_OPTS="-Dspark.driver.port=7001 -Dspark.fileserver.port=7002 -Dspark.broadcast.port=7003 -Dspark.replClassServer.port=7004 -Dspark.blockManager.port=7005 -Dspark.executor.port=7006 -Dspark.ui.port=4040 -Dspark.broadcast.factory=org.apache.spark.broadcast.HttpBroadcastFactory"
