@@ -15,6 +15,7 @@ RUN cd /usr/local && ln -s spark-1.3.0-bin-hadoop2.4 spark
 ADD scripts/start-master.sh /start-master.sh
 ADD scripts/start-worker /start-worker.sh
 ADD scripts/spark-shell.sh  /spark-shell.sh
+ADD scripts/spark-defaults.conf /spark-defaults.conf
 ENV SPARK_HOME /usr/local/spark
 
 ENV spark.driver.port 7001
