@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 
-#original dockerfile cloned Pakhomov Egor <pahomov.egor@gmail.com>
-MAINTAINER Dmitry Meyerson <dmitry.meyerson@gmail.com>
+
+MAINTAINER Pakhomov Egor <pahomov.egor@gmail.com>
 
 RUN apt-get -y update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes software-properties-common python-software-properties
@@ -39,5 +39,3 @@ ENV SPARK_WORKER_WEBUI_PORT 9091
 
 EXPOSE 8080 7077 8888 9091 4040 7001 7002 7003 7004 7005 7006 
 
-RUN ./start-master.sh
-RUN $SPARK_HOME/sbin/start-slave.sh $SPARK_MASTER_IP:7077

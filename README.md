@@ -14,6 +14,10 @@ To run worker execute:
 ```
 ./start-worker.sh
 ```
+or start 2 slaves
+
+    $SPARK_HOME/sbin/start-slave.sh $SPARK_MASTER_IP:7077
+
 You can run multiple workers. Every worker would be able to find master by it's container name "spark_master".
 
 To run spark shell against this cluster execute:
