@@ -14,6 +14,9 @@ RUN apt-get -y install curl
 RUN apt-get -y update 
 RUN apt-get install -y python-numpy python-pandas
 RUN apt-get install -y python-pip
+RUN apt-get install -y libopenblas-dev liblapack-dev liblapacke-dev libatlas-base-dev libatlas-dev
+
+
 RUN pip install requests
 RUN pip install boto
 
