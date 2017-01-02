@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 
 MAINTAINER Pakhomov Egor <pahomov.egor@gmail.com>
+LABEL version="java_8_spark_2.0.2_hadoop_2.6"
 
 ARG JAVA_MAJOR_VERSION=8
 ARG SPARK_VERSION="v2.0.2"
