@@ -1,11 +1,7 @@
 FROM ubuntu:16.04
 
 MAINTAINER Pakhomov Egor <pahomov.egor@gmail.com>
-LABEL version="java_8_spark_2.0.2_hadoop_2.6"
-
-ARG JAVA_MAJOR_VERSION=8
-ARG SPARK_VERSION="v2.0.2"
-ARG MAJOR_HADOOP_VERSION="2.6"
+LABEL version="java_8_spark_2.1.0_hadoop_2.7"
 
 # Install Python.
 RUN \
@@ -23,6 +19,8 @@ RUN \
   apt-get install -y byobu curl git htop man unzip nano wget && \
   rm -rf /var/lib/apt/lists/*
 
+ARG JAVA_MAJOR_VERSION=8
+
 # Install Java.
 RUN \
   echo oracle-java${JAVA_MAJOR_VERSION}-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
@@ -36,11 +34,15 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-${JAVA_MAJOR_VERSION}-oracle
 
 RUN apt-get install git
+
+ARG SPARK_VERSION="v2.1.0"
+
 RUN git clone  --depth 1 --branch ${SPARK_VERSION} https://github.com/apache/spark.git
 
 WORKDIR spark
 
 ENV MAVEN_OPTS "-Xmx2g -XX:ReservedCodeCacheSize=512m"
-RUN ./build/mvn -Pyarn -Phive -Phive-thriftserver -Phadoop-${MAJOR_HADOOP_VERSION} -Dhadoop.version=${MAJOR_HADOOP_VERSION}.0 -DskipTests clean package
+ARG MAJOR_HADOOP_VERSION="2.7"
+RUN ./build/mvn -Pyarn -Pmesos -Phive -Phive-thriftserver -Phadoop-${MAJOR_HADOOP_VERSION} -Dhadoop.version=${MAJOR_HADOOP_VERSION}.0 -DskipTests clean package
 
 ENV SPARK_HOME /spark
