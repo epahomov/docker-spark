@@ -47,3 +47,15 @@ To run some python script do:
 echo "import pyspark\nprint(pyspark.SparkContext().parallelize(range(0, 10)).count())" > count.py
 docker run -it -p 4040:4040 -v $(pwd)/count.py:/count.py epahomov/docker-spark /spark/bin/spark-submit /count.py
 ```
+
+## Versions
+
+This container exists in next versions:
+
+* java_8_spark_2.0.2_hadoop_2.7
+* java_8_spark_2.0.2_hadoop_2.6
+* java_8_spark_2.1.0_hadoop_2.7
+* java_8_spark_2.1.0_hadoop_2.6
+* old-spark - Old functionality with setting up spark cluster. Not supported, not recommended to use.
+
+Master has version java_8_spark_2.1.0_hadoop_2.7
