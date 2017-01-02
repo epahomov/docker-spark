@@ -1,39 +1,49 @@
-Docker container for spark stand alone cluster
+Docker container for spark client
 =================================
 
-This repository contains a set of scripts and configuration files to run a [Apache Spark](https://spark.apache.org/) standalone cluster from [Docker](https://www.docker.io/) container.
+This repository contains a [docker](https://www.docker.io/) image to run [Apache Spark](https://spark.apache.org/) client.
 
-To run master execute:
-
-```
-./start-master.sh
-```
-
-To run worker execute:
+To run simple spark [shell](http://spark.apache.org/docs/latest/quick-start.html#basics) :
 
 ```
-./start-worker.sh
-```
-You can run multiple workers. Every worker would be able to find master by it's container name "spark_master".
-
-To run spark shell against this cluster execute:
-
-```
-./spark-shell.sh
-```
-You can run multiple shells. Every shell would be able to find master by it's container name "spark_master".
- 
-If you like to run another container against this cluster, please read [explanation](http://sometechshit.blogspot.ru/2015/04/running-spark-standalone-cluster-in.html) how to prepare driver container.
-
-If you need to increase memory or core count or pass any [other parameter](https://spark.apache.org/docs/latest/configuration.html) to spark, please use:
-
-```
-./spark-shell.sh --executor-memory 300M --total-executor-cores 3
-./start-worker.sh --memory 700M
+docker run -it 71b848041c58 /spark/bin/spark-shell
 ```
 
-If you execute these images without scripts mentioned above, please:
-* Remeber to name master container as spark_master for correct working on linkage.
-* Read [documentation](http://sometechshit.blogspot.ru/2015/04/running-spark-standalone-cluster-in.html) to understand what's going on.
+To run simple python spark [shell](http://spark.apache.org/docs/latest/quick-start.html#basics) (known as pyspark) :
 
-I also recommend you to use [Zeppelin](https://zeppelin.incubator.apache.org/) instead of spark shell for working with data. It has pleasant GUI and IPython like functionality. Please use docker [container](https://registry.hub.docker.com/u/epahomov/docker-zeppelin/) for that.
+```
+docker run -it 71b848041c58 /spark/bin/pyspark
+```
+
+To run simple spark [sql shell](http://spark.apache.org/docs/latest/quick-start.html#basics) :
+
+```
+docker run -it 71b848041c58 /spark/bin/spark-sql
+```
+
+To run simple spark shell with some changed properties like [here](http://spark.apache.org/docs/latest/programming-guide.html#using-the-shell) :
+
+```
+docker run -it 71b848041c58 /spark/bin/spark-shell  --master local[4]
+```
+
+To run simple spark shell with changed spark-defaults.conf do:
+
+```
+printf "spark.master local[4] \nspark.executor.cores 4" > spark-defaults.conf
+sudo docker run -v $(pwd)/spark-defaults.conf:/spark/conf/spark-defaults.conf -it 7bd0c8c95a68 /spark/bin/spark-shell
+```
+First line write conf into file spark-defaults.conf, and second line mount this file from host file system to filesystem in container and puts it in conf directory.
+
+To be able to use spark ui, add " -p 4040:4040 " argument:
+
+```
+docker run -ti -p 4040:4040 7bd0c8c95a68 /spark/bin/spark-shell
+```
+
+To run some python script do:
+
+```
+echo "import pyspark\nprint(pyspark.SparkContext().parallelize(range(0, 10)).count())" > count.py
+docker run -it -p 4040:4040 -v $(pwd)/count.py:/count.py 7bd0c8c95a68 /spark/bin/spark-submit /count.py
+```
