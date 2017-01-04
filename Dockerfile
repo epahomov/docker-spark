@@ -21,7 +21,7 @@ RUN \
 
 ARG JAVA_MAJOR_VERSION=8
 
-# Install Java.
+# Install Java
 RUN \
   echo oracle-java${JAVA_MAJOR_VERSION}-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   add-apt-repository -y ppa:webupd${JAVA_MAJOR_VERSION}team/java && \
