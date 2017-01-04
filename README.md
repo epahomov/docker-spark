@@ -70,3 +70,7 @@ This container exists in next versions:
 * old-spark - Old functionality with setting up spark cluster. Not supported, not recommended to use.
 
 Master has version java_8_spark_2.1.0_hadoop_2.7
+
+## Zeppelin
+
+This image is base image for [Apache Zeppelin Image](https://github.com/epahomov/docker-zeppelin)
