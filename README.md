@@ -9,14 +9,16 @@ This repository contains a [docker](https://www.docker.io/) image to run [Apache
 To run simple spark [shell](http://spark.apache.org/docs/latest/quick-start.html#basics) :
 
 ```
-docker run -it epahomov/docker-spark /spark/bin/spark-shell
+docker run -it epahomov/docker-spark:lightweighted /spark/bin/spark-shell
 ```
 
 To run simple python spark [shell](http://spark.apache.org/docs/latest/quick-start.html#basics) (known as pyspark) :
 
 ```
-docker run -it epahomov/docker-spark /spark/bin/pyspark
+docker run -it epahomov/docker-spark:lightweighted /spark/bin/pyspark
 ```
+
+Examples before used lightweighted version of this image. It's very small, so it would download very fast, but it's not very flexible. All next examples would be with default version 
 
 To run simple spark [sql shell](http://spark.apache.org/docs/latest/quick-start.html#basics) :
 
@@ -67,6 +69,7 @@ This container exists in next versions:
 * java_8_spark_2.0.2_hadoop_2.6
 * java_8_spark_2.1.0_hadoop_2.7
 * java_8_spark_2.1.0_hadoop_2.6
+* lightweighted - lightweighted version of this image. It's based on alpine linux and downloaded binary, not build from source with all possible plags(like -Pyarn).
 * old-spark - Old functionality with setting up spark cluster. Not supported, not recommended to use.
 
 Master has version java_8_spark_2.1.0_hadoop_2.7

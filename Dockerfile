@@ -47,4 +47,6 @@ RUN ./build/mvn -Pyarn -Pmesos -Phive -Phive-thriftserver -Phadoop-${MAJOR_HADOO
 
 ENV SPARK_HOME /spark
 
+expose 4040
+
 CMD ["/spark/bin/spark-shell"]
