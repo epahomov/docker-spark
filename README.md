@@ -1,5 +1,8 @@
-Docker container for spark client
-=================================
+Spark client docker image
+=========================
+
+[![DockerPulls](https://img.shields.io/docker/pulls/epahomov/docker-spark.svg)](https://registry.hub.docker.com/u/epahomov/docker-spark)
+[![DockerStars](https://img.shields.io/docker/stars/epahomov/docker-spark.svg)](https://registry.hub.docker.com/u/epahomov/docker-spark)
 
 This repository contains a [docker](https://www.docker.io/) image to run [Apache Spark](https://spark.apache.org/) client.
 
