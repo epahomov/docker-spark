@@ -20,7 +20,13 @@ docker run -it epahomov/docker-spark:lightweighted /spark/bin/pyspark
 
 Examples before used lightweighted version of this image. It's very small, so it would download very fast, but it's not very flexible. All next examples would be with default version 
 
-To run simple spark [sql shell](http://spark.apache.org/docs/latest/quick-start.html#basics) :
+To run simple spark [R shell](http://spark.apache.org/docs/latest/sparkr.html) :
+
+```
+docker run -it epahomov/docker-spark /spark/bin/sparkR
+```
+
+To run simple spark [sql shell](http://spark.apache.org/docs/latest/sql-programming-guide.html) :
 
 ```
 docker run -it epahomov/docker-spark /spark/bin/spark-sql
