@@ -48,6 +48,14 @@ echo "import pyspark\nprint(pyspark.SparkContext().parallelize(range(0, 10)).cou
 docker run -it -p 4040:4040 -v $(pwd)/count.py:/count.py epahomov/docker-spark /spark/bin/spark-submit /count.py
 ```
 
+## Hadoop
+
+With this image you can connect to Hadoop cluster from spark. All you need is specify HADOOP_CONF_DIR and pass directory with hadoop configs as volume
+
+```
+docker run -v $(pwd)/hadoop:/etc/hadoop/conf -e "HADOOP_CONF_DIR=/etc/hadoop/conf" --net=host  -it epahomov/docker-spark /spark/bin/spark-shell --master yarn-client
+```
+
 ## Versions
 
 This container exists in next versions:
