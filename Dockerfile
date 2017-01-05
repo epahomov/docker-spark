@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 MAINTAINER Pakhomov Egor <pahomov.egor@gmail.com>
-LABEL version="spark_2.1_hadoop_2.7"
+LABEL version="spark_2.0_hadoop_2.7"
 
 # Install Python.
 RUN \
@@ -42,7 +42,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-${JAVA_MAJOR_VERSION}-oracle
 
 RUN apt-get install git
 
-ARG SPARK_VERSION="v2.1.0"
+ARG SPARK_VERSION="v2.0.2"
 
 RUN git clone  --depth 1 --branch ${SPARK_VERSION} https://github.com/apache/spark.git
 
