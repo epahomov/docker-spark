@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 MAINTAINER Pakhomov Egor <pahomov.egor@gmail.com>
-LABEL version="java_8_spark_2.1_hadoop_2.7"
+LABEL version="spark_2.1_hadoop_2.7"
 
 # Install Python.
 RUN \
