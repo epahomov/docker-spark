@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 MAINTAINER Pakhomov Egor <pahomov.egor@gmail.com>
-LABEL version="spark_2.1_hadoop_2.7"
+LABEL version="spark_2.1_hadoop_2.6"
 
 # Install Python.
 RUN \
@@ -49,7 +49,7 @@ RUN git clone  --depth 1 --branch ${SPARK_VERSION} https://github.com/apache/spa
 WORKDIR spark
 
 ENV MAVEN_OPTS "-Xmx2g -XX:ReservedCodeCacheSize=512m"
-ARG MAJOR_HADOOP_VERSION="2.7"
+ARG MAJOR_HADOOP_VERSION="2.6"
 RUN ./build/mvn -Pyarn -Pmesos -Phive -Phive-thriftserver -Phadoop-${MAJOR_HADOOP_VERSION} -Dhadoop.version=${MAJOR_HADOOP_VERSION}.0 -DskipTests clean package
 
 ENV SPARK_HOME /spark
