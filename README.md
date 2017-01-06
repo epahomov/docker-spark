@@ -71,14 +71,14 @@ docker run -v $(pwd)/hadoop:/etc/hadoop/conf -e "HADOOP_CONF_DIR=/etc/hadoop/con
 
 This container exists in next versions:
 
-* java_8_spark_2.0.2_hadoop_2.7
-* java_8_spark_2.0.2_hadoop_2.6
-* java_8_spark_2.1.0_hadoop_2.7
-* java_8_spark_2.1.0_hadoop_2.6
+* spark_2.0_hadoop_2.7
+* spark_2.0_hadoop_2.6
+* spark_2.1_hadoop_2.7
+* spark_2.1_hadoop_2.6
 * lightweighted - lightweighted version of this image. It's based on alpine linux and downloaded binary, not build from source with all possible plags(like -Pyarn).
 * old-spark - Old functionality with setting up spark cluster. Not supported, not recommended to use.
 
-Master has version java_8_spark_2.1.0_hadoop_2.7
+Master has version spark_2.1_hadoop_2.7
 
 ## Zeppelin
 
