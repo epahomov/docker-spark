@@ -50,7 +50,7 @@ WORKDIR spark
 
 ENV MAVEN_OPTS "-Xmx2g -XX:ReservedCodeCacheSize=512m"
 ARG MAJOR_HADOOP_VERSION="2.6"
-RUN ./build/mvn -Pyarn -Pmesos -Phive -Phive-thriftserver -Phadoop-${MAJOR_HADOOP_VERSION} -Dhadoop.version=${MAJOR_HADOOP_VERSION}.0 -DskipTests clean package
+RUN ./build/mvn -Pyarn  -Psparkr  -Pmesos -Phive -Phive-thriftserver -Phadoop-${MAJOR_HADOOP_VERSION} -Dhadoop.version=${MAJOR_HADOOP_VERSION}.0 -DskipTests clean package
 
 ENV SPARK_HOME /spark
 
