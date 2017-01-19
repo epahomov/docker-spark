@@ -48,6 +48,9 @@ RUN git clone  --depth 1 --branch ${SPARK_VERSION} https://github.com/apache/spa
 
 WORKDIR spark
 
+ENV R_HOME /usr/lib/R
+RUN ./R/install-dev.sh
+
 ENV MAVEN_OPTS "-Xmx2g -XX:ReservedCodeCacheSize=512m"
 ARG MAJOR_HADOOP_VERSION="2.7"
 RUN ./build/mvn -Pyarn  -Psparkr  -Pmesos -Phive -Phive-thriftserver -Phadoop-${MAJOR_HADOOP_VERSION} -Dhadoop.version=${MAJOR_HADOOP_VERSION}.0 -DskipTests clean package
