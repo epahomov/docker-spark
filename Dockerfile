@@ -14,7 +14,7 @@ RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | tee -a /etc/ap
     gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 && \
     gpg -a --export E084DAB9 | apt-key add - && \
     apt-get update && \
-    apt-get install -y r-base r-base-dev
+    apt-get install -y libssl-dev r-base r-base-dev libcurl4-gnutls-dev
 
 # Install system tools
 RUN \
@@ -47,6 +47,9 @@ ARG SPARK_VERSION="v2.1.0"
 RUN git clone  --depth 1 --branch ${SPARK_VERSION} https://github.com/apache/spark.git
 
 WORKDIR spark
+
+ENV R_HOME /usr/lib/R
+RUN ./R/install-dev.sh
 
 ENV MAVEN_OPTS "-Xmx2g -XX:ReservedCodeCacheSize=512m"
 ARG MAJOR_HADOOP_VERSION="2.7"
