@@ -42,7 +42,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-${JAVA_MAJOR_VERSION}-oracle
 
 RUN apt-get install git
 
-ARG SPARK_VERSION="v2.1.0"
+ARG SPARK_VERSION="v2.1.1-rc3"
 
 RUN git clone  --depth 1 --branch ${SPARK_VERSION} https://github.com/apache/spark.git
 
